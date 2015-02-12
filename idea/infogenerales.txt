@@ -1,0 +1,5 @@
+
+import pdb
+
+pdb.set_trace()
+permet d'arretter l'execution pour debuger
