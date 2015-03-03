@@ -3,4 +3,20 @@
 {% block title %} Ontologie UPEM {%endblock%}
 
 
-{% block header %} Bande de Moules {%endblock%}
+{% block header %} <h1 style="color:blue;">  Bienvenue sur le gestionnaire d'Ontologie de l'UPEM</h1> {%endblock%}
+
+
+{% block news %} {% include 'news.html' %}{%endblock%}
+
+
+{% block nav %} <p><a href="{{ request.build_absolute_uri }}/idea/acceuil.html">L'acceuil </a></p>
+ <p><a href="{{ request.build_absolute_uri }}/idea/index.html"> Home </a></p>
+ <p><a href="{{ request.build_absolute_uri }}/concept/"> les concepts </a></p>
+ <p><a href="{{ request.build_absolute_uri }}/concept/graph"> le graph </a></p>
+<p><a href="{{ request.build_absolute_uri }}/admin/concept/concept/add/"> Ajouter un Concept </a></p>
+<p><a href="{{ request.build_absolute_uri }}/admin/concept/link/add/"> Ajouter un Lien </a></p>
+<p><a href="{{ request.build_absolute_uri }}/concept/level"> Mise à jour des Niveaux </a></p>
+<!-- {{ hidden }} -->
+
+{%endblock%}
+

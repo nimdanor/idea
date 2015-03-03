@@ -17,10 +17,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# DEV 
 SECRET_KEY = '^-k1d$y2mv_x+n06eyf-!l9&#n0&)5-hhv)h*r=(!c6l8!ad++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEV 
+# DEBUG = True
+# PROD 
+DEBUG=True
 
 TEMPLATE_DEBUG = True
 
@@ -47,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'concept.mymiddleware.MyExceptionMiddleware'
 )
 
 ROOT_URLCONF = 'idea.urls'
@@ -57,11 +62,12 @@ WSGI_APPLICATION = 'idea.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+# pour la prod postgres 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+}
 }
 
 # Internationalization
@@ -89,4 +95,9 @@ STATICFILES_DIRS = (
 SETTINGS_PATH= os.path.realpath(os.path.dirname(__file__))
 TEMPLATE_DIRS = (
     os.path.join(SETTINGS_PATH, 'templates'),
+)
+
+ADMINS = (
+	("patrice Herault", 'hp@univ-mlv.fr'),
+	("dominique Revuz", 'dr@univ-mlv.fr'),
 )

@@ -1,0 +1,19 @@
+
+
+liste de TODO
+
+les ascendants  d'un concept sous forme de liste / de graph / JSON (voir plus bas)
+les descendants d'un concept sous forme de liste / de graph/ JSON (voir plus bas)
+
+recherche d'un mot dans la définition d'un concept
+
+
+MODULE RESTFULL accès par service à l'ontologie
+
+    récupération JSON de l'ontologie complette
+        possibilité de récupérer des ontologies partielles (liées à une racine par exemple)
+        posssibilité de récuperer les ascendant ou descendants d'un concepts
+
+    quels autres service proposer en mode restfull ??
+
+Possibilite d'avoir un accès clikcable aux concepts

@@ -20,39 +20,106 @@
 
 
 -->
+<!-- {% load staticfiles %} -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="">
+   <meta name="author" content="">
 
-{% load staticfiles %}
+  <link rel="shortcut icon" href="static/favicon.png">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ 
+    <script src="{% static 'bootstrap-3.3.2-dist/js/bootstrap.min.js'  %}"></script>
+    
+       <link href="{% static 'bootstrap-3.3.2-dist/css/style.css' %}" rel="stylesheet">
+       <link href="{% static 'bootstrap-3.3.2-dist/css/bootstrap.min.css' %}" rel="stylesheet">
 
-<head>
-    <title>{% block title%} {% endblock %}</title>
+         
+
+
+    <title >{% block title%} {% endblock %}</title>
+
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <meta name="generator" content="Geany 1.24.1" />
+    <meta name="author" content="Dominique Revuz 2015" />
 </head>
 
-<body>
-    <div id="header">{% block header %} {% endblock %}
-    {% if ima != None %}
-        {% if ima == 0 %} 1
-            <p style="center"><img src="{% static 'DT76721A.jpg' %}" alt="The Image"/></p>
-        {% elif ima == 1 %}2
-         <p style="center"><img src="{% static 'DT76721B.jpg' %}" alt="The Image"/></p>
+  
+    <body>
 
-        {% elif ima == 2 %} 3
-         <p style="center"><img src="{% static 'DT76721C.jpg' %}" alt="The Image"/></p>
-
-
+    <div="header">
+           {% if image != None %}
+        {% if image == 0 %}
+            <p style="center"><img class="inner-wrap" src="{% static 'DT76721A.jpg' %}" alt="The Image"/></p>
+        {% elif image == 1 %}
+         <p style="center"><img class="inner-wrap" src="{% static 'DT76721B.jpg' %}" alt="The Image"/></p>
+        {% elif image == 2 %}
+         <p style="center"><img class="inner-wrap" src="{% static 'DT76721C.jpg' %}" alt="The Image"/></p>
+        {% else %}
+        <!-- image='{{ image }}'  GROSTEXTDELAMORTQUITUE utilisé par les test a ne pas modifier -->
+           <p style="center"><img src="{% static 'DT76721A.jpg' %}" alt="The Image"/></p>
         {% endif %}
-                {% else %} 4
-          <p style="center"> INDIQUER DANS LA VARIABLE ima L'INDICE DE VOTRE IMAGE'</p>
- {% endif %}
+    {% else %}
+          <p> INDIQUER DANS LA VARIABLE image L'INDICE DE VOTRE IMAGE'</p>
+    {% endif %}
+		</img>
+		
+ {% block header %}    <h1 style="color:blue;"> Ontologie du projet Premier language </h1> {% endblock %}
+
+  
+  </div>
+  
+ 
+
+   <div class="container-fluid">
+    {% block news %} <p> Pour toute questions demandez à dr @ univ - mlv . fr </p> {% endblock %}
+ </div>
+      
+  
+  
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+			    {% block nav %}
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+			  
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+            {% endblock %}
+        </div>
+        
+        <!--  <h4 class="sub-header">{% block content_title %} Titre défectueux{% endblock %}</h4>-->
+          <div class="table-responsive">
+            {% block content %} Si vous avez ce texte veuillez le signaler c'est une erreur .{% endblock %}
+          </div>
+        </div>
+      </div>
     </div>
-<div id="nav">{% block nav %} {% endblock %}</div>
-
-
-</body>
+   
+    <footer class="foot">
+{% block footer %}
+  <hr/>  <p>Copyright D Revuz 2015 all right reserved until i release a real version</p> {% endblock %}
+    </footer>
+  </body>
+	
 
 </html>
