@@ -1,0 +1,11 @@
+{% extends 'concept/base_concept.html' %}
+
+{% block header %} Edition du Concept {{ theform.instance.name }}{%endblock%}
+
+{% block content %}
+<form action="/concept/edit/{{ theform.instance.pk }}/" method="post">
+    {% csrf_token %}
+    {{ theform.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

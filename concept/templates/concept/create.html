@@ -1,0 +1,14 @@
+{% extends 'concept/base_concept.html' %}
+
+{% block header %} Creation  d'un NOUVEAU Concept {%endblock%}
+
+{% block content %}
+
+{% if etat == 'invalide' %}<h2> UN problème avec vos données (le concept existe déja ?)</h2>
+{% endif %}
+<form action="/concept/create/" method="post">
+    {% csrf_token %}
+    {{ theform.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

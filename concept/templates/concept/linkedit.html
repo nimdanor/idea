@@ -1,0 +1,16 @@
+{% extends "concept/base_concept.html" %}
+
+
+{% block content %}
+<h2>Choisissez des prérequis  supplémentaires pour le Concept : {{ concept.name }}</h2>
+<p>Tout concept à la racine comme pré-requis.</p>
+<p>La notion de prérequis est transitive et acyclique donc ne vous sont proposé que des concepts qui sont pas dans les prérequis calculés par transitivité, ni dans la descendance du concept.
+</p>
+<p>Vous pouvez choisir plusieurs pré-requis, supplémentaires. </p>
+
+<form action="/concept/addlink/{{ concept.pk }}/" method="post">
+    {% csrf_token %}
+    {{ theform.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -26,4 +26,14 @@ sudo pip3 install virtualenv
 	definir la variable environnement
 	SECRET_KEY = '^-k1d$y2mv_x+n06eyf-!l9&#n0&)5-hhv)h*r=(!c6l8!ad++'
 
+	definise les url pl.univ-mlv.fr (premier langage)
+ 	DEBUG=False 
+	dans le fichier settings.py 
+	definir la base de donnée
+	python3 manage.py makemigrations 
+	python3 manage.py migrate
+	python3 manage.py createsuperuser
+6) lancer le server 
+	python3 manage.py runserver 
+	ou sont les logs ?
 

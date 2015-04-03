@@ -9,8 +9,11 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^idea/(?P<name>[^.]+).html$',  views.acceuil),
+
+
     url(r'^concept/',include('concept.urls')),
+    url(r'^(?P<name>[^.]+).html$',  views.acceuil),
+    url(r'^idea/(?P<name>[^.]+).html$',  views.acceuil),
     url(r'^$',  views.index),
 
 

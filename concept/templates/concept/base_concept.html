@@ -1,12 +1,53 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
-{% block nav %} <p><a href="{{ request.build_absolute_uri }}/idea/acceuil.html">L'acceuil </a></p>
- <p><a href="{{ request.build_absolute_uri }}/idea/index.html"> Home </a></p>
- <p><a href="{{ request.build_absolute_uri }}/concept/"> les concepts: la racine  </a></p>
- <p><a href="{{ request.build_absolute_uri }}/concept/graph"> le graph </a></p>
+
+{% block header %} {%endblock%}
+
+{% block navbar %}
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse ">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Ontologies</a> <!-- Retour à la racine -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/concept/create/">Creattion</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Graph <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+               <!-- <li class="dropdown-header" ><p style="{ color:'red'}">Admin</p></li>-->
+                <li><a href="/concept/graph/TB/">de haut en bas </a></li>
+                  <li><a href="/concept/graph/BT/">de bas  en haut </a></li>
+                 <li><a href="/concept/graph/RL/">de Droite à Gauche </a></li>
+                 <li><a href="/concept/graph/LR/">de Gauche à Droite </a></li>
+              </ul>
+            </li>
+
+
+
+
+            <li><a href="/concept/listing/">Listing</a></li>
+            <li><a href="/concept/level/">Level</a></li>
+            <li><a href="/">Retour Acceuil</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
 
 {%endblock%}
 
-{% block content %}
 
+
+{% block content %} Base de Concept
 {%endblock%}

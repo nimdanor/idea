@@ -3,20 +3,30 @@
 {% block title %} Ontologie UPEM {%endblock%}
 
 
-{% block header %} <h1 style="color:blue;">  Bienvenue sur le gestionnaire d'Ontologie de l'UPEM</h1> {%endblock%}
+{% block header %}
+<h1></h1>
+
+
+<h1 style="color:blue">   Ontologies du projet Premier language </h1>    {%endblock%}
 
 
 {% block news %} {% include 'news.html' %}{%endblock%}
 
+{% block navbar %} {% include 'basiquenav.html' %} {%endblock%}
 
-{% block nav %} <p><a href="{{ request.build_absolute_uri }}/idea/acceuil.html">L'acceuil </a></p>
- <p><a href="{{ request.build_absolute_uri }}/idea/index.html"> Home </a></p>
- <p><a href="{{ request.build_absolute_uri }}/concept/"> les concepts </a></p>
- <p><a href="{{ request.build_absolute_uri }}/concept/graph"> le graph </a></p>
-<p><a href="{{ request.build_absolute_uri }}/admin/concept/concept/add/"> Ajouter un Concept </a></p>
-<p><a href="{{ request.build_absolute_uri }}/admin/concept/link/add/"> Ajouter un Lien </a></p>
-<p><a href="{{ request.build_absolute_uri }}/concept/level"> Mise à jour des Niveaux </a></p>
-<!-- {{ hidden }} -->
 
-{%endblock%}
+ {% block content %} <!-- content -->
+<h2>
+Pour toutes vos remarques ou demande de développement veuillez utiliser le lien suivant:
+<a href="http://bugzilla.univ-mlv.fr/"> http://bugzilla.univ-mlv.fr/</a>
+qui est opérationel pour prendre vos besoins, remarques etc.
+</h2>
+<h2>
+    Choisiser votre ontologie dans le menu du haut.
+</h2>
+<h3><a href="http://pl.univ-mlv.fr/concept"> L'ontologie de concepts informatiques </a></h3>
+
+<h3><a href="http://plm.univ-mlv.fr/concept"> L'ontologie de concepts Mathématiques </a></h3>
+
+{% endblock %}
 

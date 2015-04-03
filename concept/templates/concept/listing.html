@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends "concept/base_concept.html" %}
+
+
+
+{% block content_title %}
+Graphe des Prérequis du Concept {{ cname }}
+{%endblock%}
+
+{% block content %}
+<table class="table table-striped">
+    <tr><th>Ajouter un Prérequis </th><th width="5%">NOM</th><th width="10%">lname</th><th>Description</th> </tr>
+    {% for c in list %}
+        <tr><td><a href="{% url 'concept.views.addPreLink' concept_id=c.pk %}"> add </a></td>
+            <td><a href="{% url 'concept.views.edit' concept_id=c.pk %}"> {{ c.name}}</a></td><td>{{c.lname}}</td><td>{{c.description}}</td></tr>
+    {% endfor %}
+</table>
+
+
+{%endblock%}
