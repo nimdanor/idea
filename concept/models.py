@@ -1,7 +1,8 @@
 from django.db import models
+from django_ace import AceWidget
 from django.shortcuts import get_object_or_404
-from django.forms import Form, MultipleChoiceField, ModelForm, CheckboxSelectMultiple
-from django.forms.fields import ChoiceField
+from django.forms import Form, MultipleChoiceField, ModelForm, CheckboxSelectMultiple,Textarea
+from django.forms.fields import ChoiceField,CharField
 from concept.LowerCharField import LowerCaseCharField
 
 from concept.exceptions import *
@@ -107,7 +108,7 @@ class Concept(models.Model):
 
 
     def makeUrl(self):
-        return "/concept/edit/" + str(self.pk)  
+        return "/concept/edit/" + str(self.pk)
 
 
     def dolevelupdate(self, level):
@@ -190,6 +191,7 @@ def updateLevel():
 
 
 class ConceptForm(ModelForm):
+    #description = CharField(widget=AceWidget)
     class Meta:
         model = Concept
         fields = (

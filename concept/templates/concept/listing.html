@@ -8,13 +8,14 @@ Graphe des Prérequis du Concept {{ cname }}
 {%endblock%}
 
 {% block content %}
-<table class="table table-striped">
+<table class="table table-striped" >
     <tr><th>Ajouter un Prérequis </th><th width="5%">NOM</th><th width="10%">lname</th><th>Description</th> </tr>
     {% for c in list %}
         <tr><td><a href="{% url 'concept.views.addPreLink' concept_id=c.pk %}"> add </a></td>
             <td><a href="{% url 'concept.views.edit' concept_id=c.pk %}"> {{ c.name}}</a></td><td>{{c.lname}}</td><td>{{c.description}}</td></tr>
     {% endfor %}
 </table>
+
 
 
 {%endblock%}
