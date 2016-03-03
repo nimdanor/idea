@@ -1,11 +1,13 @@
 from django.db import models
-from django_ace import AceWidget
+# wharning must be set in setting from django_ace import AceWidget
 from django.shortcuts import get_object_or_404
 from django.forms import Form, MultipleChoiceField, ModelForm, CheckboxSelectMultiple,Textarea
 from django.forms.fields import ChoiceField,CharField
 from concept.LowerCharField import LowerCaseCharField
 
 from concept.exceptions import *
+
+import json
 
 # Create your models here.
 
@@ -25,6 +27,8 @@ class Concept(models.Model):
     pub_date = models.DateTimeField('date created', auto_now_add=True)  # creation time
     update = models.DateTimeField('date update', auto_now=True)  #
     level = models.IntegerField('niveau', default=-1)
+
+
 
     def racine():
         return Concept.objects.filter(pk=1)[0]
@@ -119,6 +123,17 @@ class Concept(models.Model):
         s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
         for c in s1:
             c.descendant.dolevelupdate(level + 1)
+
+
+def toJson():
+	s="{"
+	for cc in Concept.objects.all():
+		s += "{  \"name\":\"" +str(cc.name)+ "\","
+		s += "  \"lname\":\"" +str(cc.lname)+ "\","
+		s += "  \"description\":\"" +str(cc.description)+ "\"},"
+	s += "}"
+	return s
+
 
 
 class Link(models.Model):

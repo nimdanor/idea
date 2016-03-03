@@ -1,7 +1,7 @@
 __author__ = 'dr'
 from django.http import HttpResponse,Http404
 from django.shortcuts import get_object_or_404,get_list_or_404,render_to_response
-from concept.models import Concept,Link,getRoots,updateLevel,ConceptForm,AddLinkForm
+from concept.models import Concept,Link,getRoots,updateLevel,ConceptForm,AddLinkForm,toJson
 from graphviz import Digraph
 from django.template import RequestContext, loader
 from django.core import serializers
@@ -11,6 +11,9 @@ def level(request):
     updateLevel()
     return graphRL(request)
 
+
+def jsonview(request):
+	return HttpResponse(toJson())
 
 
 
@@ -25,7 +28,10 @@ def graph(request,rankdir):
 
     return makeGraph(request,descl,"graphe general","general",rankdir)
 
-
+def knowls(request,concept_id):
+    r = get_object_or_404(Concept,pk=concept_id)
+    text = "<div><p>" +  r.description + "</p></div>"
+    return HttpResponse(text)
 
 
 def makeGraph(request,descl,comment , cname,rankdir="RL"):
@@ -123,10 +129,11 @@ def edit(request,concept_id):
         return graphTB(request)
 
 def export(request,type):
-    # utilisation d'un sérialiseur
+    # utilisation d'un sérialiseur json
     # question comment le lier a une réponse Http
     # ou est le flus correspondant
         return graphTB(request)
+
 import pdb
 
 

@@ -1,18 +1,18 @@
 // graphe general
 digraph {
 	graph [rankdir=RL]
-		racine [URL="\"<a href='/concept/edit/1/'>racine 0 1 </a>\""]
-		racine [URL="\"<a href='/concept/edit/1/'>racine 0 1 </a>\""]
-		deux [URL="\"<a href='/concept/edit/2/'>deux 1 2 </a>\""]
-		deux [URL="\"<a href='/concept/edit/2/'>deux 1 2 </a>\""]
-		trois [URL="\"<a href='/concept/edit/3/'>trois 2 3 </a>\""]
-		trois [URL="\"<a href='/concept/edit/3/'>trois 2 3 </a>\""]
-		quatre [URL="\"<a href='/concept/edit/4/'>quatre 1 4 </a>\""]
-		quatre [URL="\"<a href='/concept/edit/4/'>quatre 1 4 </a>\""]
-		cinq [URL="\"<a href='/concept/edit/5/'>cinq 2 5 </a>\""]
-		cinq [URL="\"<a href='/concept/edit/5/'>cinq 2 5 </a>\""]
-		six [URL="\"<a href='/concept/edit/6/'>six -1 6 </a>\""]
-		six [URL="\"<a href='/concept/edit/6/'>six -1 6 </a>\""]
+		racine [URL="/concept/edit/1"]
+		racine [URL="/concept/edit/1"]
+		deux [URL="/concept/edit/2"]
+		deux [URL="/concept/edit/2"]
+		trois [URL="/concept/edit/3"]
+		trois [URL="/concept/edit/3"]
+		quatre [URL="/concept/edit/4"]
+		quatre [URL="/concept/edit/4"]
+		cinq [URL="/concept/edit/5"]
+		cinq [URL="/concept/edit/5"]
+		six [URL="/concept/edit/6"]
+		six [URL="/concept/edit/6"]
 			deux -> racine
 			quatre -> racine
 			cinq -> quatre

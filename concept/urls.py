@@ -22,7 +22,9 @@ urlpatterns = patterns('',
     url(r'^addlink/(?P<concept_id>\d+)/$', views.addPreLink),
     url(r'^edit/(?P<concept_id>\d+)/$', views.edit),
     url(r'^graph/(?P<concept_id>\d+)/$', views.graphTT),
-    url(r'^export/(?P<type>\w+)/$',views.export)
+    url(r'^export/(?P<type>\w+)/$',views.export),
+    url(r'^k/(?P<concept_id>\d+)/$', views.knowls),
+    url(r'^json/$', views.jsonview),
 
 
     #url(r'^edit/(?P<concept_id>\d+)/$', views.edit),

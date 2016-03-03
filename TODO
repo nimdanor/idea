@@ -1,6 +1,12 @@
 
 
-liste de TODO
+
+Utilisation de Markdown dans les description de concept
+Un champ syntaxe dans la base de donnée ou l'on parle de la syntaxe
+un champs link avec si il existe un liens sur la documentation
+
+
+
 
 les ascendants  d'un concept sous forme de liste / de graph / JSON (voir plus bas)
 les descendants d'un concept sous forme de liste / de graph/ JSON (voir plus bas)
@@ -16,6 +22,7 @@ MODULE RESTFULL accès par service à l'ontologie
 
     quels autres service proposer en mode restfull ??
 
+FAITS:
 Possibilite d'avoir un accès clikcable aux concepts
 
 
