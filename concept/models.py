@@ -126,12 +126,13 @@ class Concept(models.Model):
 
 
 def toJson():
-	s="{"
+	s="["
 	for cc in Concept.objects.all():
+
 		s += "{  \"name\":\"" +str(cc.name)+ "\","
 		s += "  \"lname\":\"" +str(cc.lname)+ "\","
-		s += "  \"description\":\"" +str(cc.description)+ "\"},"
-	s += "}"
+		s += "  \"description\": " + json.dumps(cc.description)+ "},"
+	s += "]"
 	return s
 
 

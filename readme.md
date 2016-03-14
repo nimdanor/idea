@@ -20,6 +20,7 @@ sudo pip3 install virtualenv
 
 	vous pouver tester en local le projet 
 	cd concepts
+	python3 manage makemigrations 
 	python3 manage runserver
 	firefox http://127.0.0.1:8000/
 5) Deployement
