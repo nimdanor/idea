@@ -1,0 +1,21 @@
+
+{% extends "concept/base_concept.html" %}
+
+
+
+{% block content_title %}
+Liste des etudiants:
+{%endblock%}
+
+{% block content %}
+<table class="table table-striped" >
+    <tr><th>Choix d'un etudiant  </th><th width="5%">ID</th><th width="10%">Nom</th><th>Prénom</th> </tr>
+    {% for c in list %}
+        <tr><td><a href="{% url 'student.views.chooseconcept' studid=c.student_id %}"> choisir cet etudiant </td>
+            <td>{{ c.student_id}}</td><td>{{c.first_name}}</td><td>{{c.last_name}}</td></a></tr>
+    {% endfor %}
+</table>
+
+
+
+{%endblock%}

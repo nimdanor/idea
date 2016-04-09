@@ -5,15 +5,17 @@ from concept.models import Concept,Link,getRoots,updateLevel,ConceptForm,AddLink
 from graphviz import Digraph
 from django.template import RequestContext, loader
 from django.core import serializers
-
+from student.models import Student
+from jsonview.decorators import json_view
 
 def level(request):
     updateLevel()
     return graphRL(request)
 
 
+@json_view
 def jsonview(request):
-	return HttpResponse(toJson())
+	return toJson()
 
 
 
@@ -28,35 +30,63 @@ def graph(request,rankdir):
 
     return makeGraph(request,descl,"graphe general","general",rankdir)
 
+def onlyGraph(request):
+	descl = []
+	for r in getRoots():
+		descl += r.getDescendantLinks()
+
+	dumpgraph(request,descl,"Graphe Epistèmes PL","RL")
+
+	template = loader.get_template("concept/graph_only.html")
+	context = RequestContext(request, {
+		'image':  2,
+		'hidden':'fnum',
+		'cname':"Graphe Complet"
+	})
+	return HttpResponse(template.render(context))
+
+
 def knowls(request,concept_id):
     r = get_object_or_404(Concept,pk=concept_id)
     text = "<div><p>" +  r.description + "</p></div>"
     return HttpResponse(text)
 
+def dumpgraph(request,descl, comment,rankdir="RL", student="kiki"):
+	dot = Digraph(comment=comment)
+	dot.format='svg'
+	dot.graph_attr['rankdir'] = rankdir
+	student = get_object_or_404(Student,student_id=11)
+
+	s=set()
+	for l in descl:
+		s.add(l.ascendant)
+		s.add(l.descendant)
+	for x in s:
+		if student != None and student.knowsConcept(x.name) :
+			dot.node(x.name,URL=x.makeUrl(),color="green",style="filled",shape="box")
+		else:
+			 dot.node(x.name,URL=x.makeUrl(),color="white",style="filled",shape="box")
+
+
+
+	for l in descl:
+		dot.edge(l.descendant.name,l.ascendant.name)
+		pass
+	dot.render('concept/templates/concept/graph')
 
 def makeGraph(request,descl,comment , cname,rankdir="RL"):
+	dumpgraph(request,descl,comment,rankdir)
 
-    dot = Digraph(comment=comment)
-    dot.format='svg'
-    dot.graph_attr['rankdir'] = rankdir
-    s=set()
-    for l in descl:
-        s.add(l.ascendant)
-        s.add(l.descendant)
-    for x in s:
-        dot.node(x.name,URL=x.makeUrl())
-        dot.node(x.name,URL=x.makeUrl())
-    for l in descl:
-        dot.edge(l.descendant.name,l.ascendant.name)
-    dot.render('concept/templates/concept/graph')
+	template = loader.get_template("concept/graph.html")
+	context = RequestContext(request, {
+		'image':  2,
+		'hidden':'fnum',
+		'cname':cname
+	})
+	return HttpResponse(template.render(context))
 
-    template = loader.get_template("concept/graph.html")
-    context = RequestContext(request, {
-        'image':  2,
-        'hidden':'fnum',
-        'cname':cname
-    })
-    return HttpResponse(template.render(context))
+
+
 
 def graphRL(request):
     return graph(request,'RL')

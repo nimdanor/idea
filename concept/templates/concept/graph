@@ -1,23 +1,202 @@
 // graphe general
 digraph {
 	graph [rankdir=RL]
-		racine [URL="/concept/edit/1"]
-		racine [URL="/concept/edit/1"]
-		deux [URL="/concept/edit/2"]
-		deux [URL="/concept/edit/2"]
-		trois [URL="/concept/edit/3"]
-		trois [URL="/concept/edit/3"]
-		quatre [URL="/concept/edit/4"]
-		quatre [URL="/concept/edit/4"]
-		cinq [URL="/concept/edit/5"]
-		cinq [URL="/concept/edit/5"]
-		six [URL="/concept/edit/6"]
-		six [URL="/concept/edit/6"]
-			deux -> racine
-			quatre -> racine
-			cinq -> quatre
-			trois -> deux
-			trois -> quatre
-			cinq -> deux
-			six -> cinq
+		root [URL="/concept/edit/1" color=green shape=box style=filled]
+		variable [URL="/concept/edit/2" color=green shape=box style=filled]
+		identifier [URL="/concept/edit/3" color=white shape=box style=filled]
+		fonction [URL="/concept/edit/4" color=white shape=box style=filled]
+		assignement [URL="/concept/edit/5" color=white shape=box style=filled]
+		suite [URL="/concept/edit/7" color=white shape=box style=filled]
+		call [URL="/concept/edit/8" color=white shape=box style=filled]
+		rightvalue [URL="/concept/edit/9" color=white shape=box style=filled]
+		primitivetype [URL="/concept/edit/10" color=white shape=box style=filled]
+		return [URL="/concept/edit/11" color=green shape=box style=filled]
+		branching [URL="/concept/edit/13" color=white shape=box style=filled]
+		loop [URL="/concept/edit/14" color=white shape=box style=filled]
+		tuples [URL="/concept/edit/15" color=white shape=box style=filled]
+		list [URL="/concept/edit/16" color=white shape=box style=filled]
+		comparaison [URL="/concept/edit/17" color=white shape=box style=filled]
+		hashtable [URL="/concept/edit/19" color=white shape=box style=filled]
+		recursive [URL="/concept/edit/20" color=white shape=box style=filled]
+		scope [URL="/concept/edit/21" color=white shape=box style=filled]
+		logic [URL="/concept/edit/22" color=white shape=box style=filled]
+		memory [URL="/concept/edit/23" color=green shape=box style=filled]
+		nonmutable [URL="/concept/edit/24" color=white shape=box style=filled]
+		filetype [URL="/concept/edit/26" color=white shape=box style=filled]
+		iterator [URL="/concept/edit/27" color=white shape=box style=filled]
+		namedparameters [URL="/concept/edit/28" color=white shape=box style=filled]
+		path [URL="/concept/edit/29" color=white shape=box style=filled]
+		absolutepath [URL="/concept/edit/30" color=white shape=box style=filled]
+		string [URL="/concept/edit/31" color=white shape=box style=filled]
+		usertype [URL="/concept/edit/32" color=white shape=box style=filled]
+		class_objet [URL="/concept/edit/33" color=white shape=box style=filled]
+		boolean [URL="/concept/edit/34" color=white shape=box style=filled]
+		keywords [URL="/concept/edit/35" color=green shape=box style=filled]
+		relativepath [URL="/concept/edit/36" color=white shape=box style=filled]
+		foreach [URL="/concept/edit/37" color=white shape=box style=filled]
+		generator [URL="/concept/edit/38" color=white shape=box style=filled]
+		yield [URL="/concept/edit/39" color=white shape=box style=filled]
+		method [URL="/concept/edit/40" color=white shape=box style=filled]
+		dictionnary [URL="/concept/edit/41" color=white shape=box style=filled]
+		type [URL="/concept/edit/42" color=white shape=box style=filled]
+		char [URL="/concept/edit/43" color=white shape=box style=filled]
+		concatenation [URL="/concept/edit/44" color=white shape=box style=filled]
+		commandlanguage [URL="/concept/edit/45" color=white shape=box style=filled]
+		operation [URL="/concept/edit/46" color=white shape=box style=filled]
+		scriptlanguage [URL="/concept/edit/47" color=white shape=box style=filled]
+		ashash [URL="/concept/edit/48" color=white shape=box style=filled]
+		executionstack [URL="/concept/edit/50" color=white shape=box style=filled]
+		stack [URL="/concept/edit/51" color=white shape=box style=filled]
+		variadicfunction [URL="/concept/edit/52" color=white shape=box style=filled]
+		stdin [URL="/concept/edit/53" color=white shape=box style=filled]
+		grammar [URL="/concept/edit/54" color=white shape=box style=filled]
+		language [URL="/concept/edit/55" color=white shape=box style=filled]
+		decorator [URL="/concept/edit/56" color=white shape=box style=filled]
+		decoratorsequence [URL="/concept/edit/57" color=green shape=box style=filled]
+		gc [URL="/concept/edit/58" color=white shape=box style=filled]
+		coroutine [URL="/concept/edit/59" color=white shape=box style=filled]
+		break [URL="/concept/edit/60" color=white shape=box style=filled]
+		continue [URL="/concept/edit/61" color=white shape=box style=filled]
+		predefined [URL="/concept/edit/62" color=white shape=box style=filled]
+		sprocessus [URL="/concept/edit/63" color=white shape=box style=filled]
+		operatorpriority [URL="/concept/edit/64" color=white shape=box style=filled]
+		global [URL="/concept/edit/66" color=green shape=box style=filled]
+		parameter [URL="/concept/edit/67" color=white shape=box style=filled]
+		literal [URL="/concept/edit/68" color=white shape=box style=filled]
+		input [URL="/concept/edit/69" color=white shape=box style=filled]
+		comment [URL="/concept/edit/70" color=green shape=box style=filled]
+		listop [URL="/concept/edit/71" color=white shape=box style=filled]
+		sequenceop [URL="/concept/edit/72" color=white shape=box style=filled]
+		instructions [URL="/concept/edit/73" color=white shape=box style=filled]
+		deepcopy [URL="/concept/edit/74" color=white shape=box style=filled]
+		sequence [URL="/concept/edit/75" color=white shape=box style=filled]
+		lexical [URL="/concept/edit/76" color=white shape=box style=filled]
+		scopeinclass [URL="/concept/edit/77" color=white shape=box style=filled]
+		stdout [URL="/concept/edit/78" color=white shape=box style=filled]
+		stderr [URL="/concept/edit/79" color=white shape=box style=filled]
+		print [URL="/concept/edit/80" color=white shape=box style=filled]
+		display [URL="/concept/edit/81" color=white shape=box style=filled]
+		block [URL="/concept/edit/82" color=white shape=box style=filled]
+		indentation [URL="/concept/edit/83" color=white shape=box style=filled]
+		variadicmethod [URL="/concept/edit/84" color=white shape=box style=filled]
+		listcomprehensions [URL="/concept/edit/85" color=white shape=box style=filled]
+		" loopingtechniques" [URL="/concept/edit/86" color=white shape=box style=filled]
+		format [URL="/concept/edit/87" color=white shape=box style=filled]
+			fonction -> identifier
+			assignement -> variable
+			variable -> identifier
+			call -> fonction
+			rightvalue -> variable
+			variable -> primitivetype
+			loop -> branching
+			branching -> comparaison
+			hashtable -> call
+			branching -> suite
+			fonction -> suite
+			recursive -> call
+			recursive -> branching
+			scope -> variable
+			branching -> logic
+			return -> primitivetype
+			memory -> root
+			nonmutable -> assignement
+			tuples -> nonmutable
+			variable -> memory
+			filetype -> assignement
+			filetype -> call
+			filetype -> rightvalue
+			iterator -> loop
+			iterator -> list
+			comparaison -> variable
+			absolutepath -> path
+			class_objet -> usertype
+			keywords -> root
+			identifier -> keywords
+			logic -> boolean
+			comparaison -> boolean
+			list -> assignement
+			relativepath -> path
+			usertype -> primitivetype
+			scope -> fonction
+			foreach -> iterator
+			generator -> iterator
+			yield -> generator
+			list -> usertype
+			dictionnary -> usertype
+			type -> root
+			primitivetype -> type
+			filetype -> path
+			path -> string
+			concatenation -> operation
+			ashash -> nonmutable
+			stack -> list
+			concatenation -> string
+			return -> fonction
+			string -> char
+			executionstack -> call
+			executionstack -> variable
+			method -> fonction
+			variadicfunction -> tuples
+			variadicfunction -> namedparameters
+			variadicfunction -> dictionnary
+			break -> loop
+			continue -> loop
+			sprocessus -> root
+			predefined -> keywords
+			commandlanguage -> grammar
+			fonction -> predefined
+			scriptlanguage -> grammar
+			stdin -> sprocessus
+			coroutine -> generator
+			gc -> scope
+			scriptlanguage -> language
+			commandlanguage -> language
+			operatorpriority -> operation
+			parameter -> call
+			namedparameters -> parameter
+			char -> primitivetype
+			literal -> root
+			input -> predefined
+			boolean -> primitivetype
+			listop -> list
+			decoratorsequence -> decorator
+			decorator -> fonction
+			stdin -> input
+			operation -> literal
+			operation -> variable
+			input -> string
+			yield -> return
+			instructions -> root
+			language -> instructions
+			comment -> language
+			suite -> instructions
+			sequenceop -> sequence
+			deepcopy -> sequence
+			sequence -> primitivetype
+			global -> scope
+			dictionnary -> ashash
+			scopeinclass -> class_objet
+			list -> sequence
+			grammar -> lexical
+			lexical -> identifier
+			lexical -> literal
+			print -> predefined
+			stdout -> print
+			stderr -> print
+			stderr -> sprocessus
+			stdout -> sprocessus
+			indentation -> block
+			block -> instructions
+			display -> literal
+			relativepath -> sprocessus
+			scopeinclass -> scope
+			method -> class_objet
+			variadicmethod -> method
+			variadicmethod -> variadicfunction
+			tuples -> sequence
+			hashtable -> ashash
+			listcomprehensions -> loop
+			listcomprehensions -> list
+			" loopingtechniques" -> root
+			format -> root
 }

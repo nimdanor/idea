@@ -1,0 +1,21 @@
+
+{% extends "concept/base_concept.html" %}
+
+
+
+{% block content_title %}
+Graphe des Prérequis du Concept {{ cname }}
+{%endblock%}
+
+{% block content %}
+<table class="table table-striped" >
+    <tr><th>Ajouter un Prérequis </th><th width="5%">NOM</th><th width="10%">lname</th><th>Description</th> </tr>
+    {% for c in list %}
+        <tr><td><a href="{% url 'student.views.stuaddconcept' student_id=stu concept_id=c.pk level=1 %}"> add </a></td>
+            <td> {{ c.name}}</td><td>{{c.lname}}</td><td>{{c.description}}</td></tr>
+    {% endfor %}
+</table>
+
+
+
+{%endblock%}

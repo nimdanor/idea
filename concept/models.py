@@ -11,7 +11,6 @@ import json
 
 # Create your models here.
 
-
 class Concept(models.Model):
     """
     Most important Class in the project
