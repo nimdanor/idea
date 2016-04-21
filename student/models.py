@@ -1,7 +1,7 @@
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_init, pre_save
-# Create your models here.
+from django.shortcuts import get_object_or_404
 import json
 
 class Student(models.Model):
@@ -27,6 +27,21 @@ class Student(models.Model):
 		self.conceptmap[name]=value
 		self.save()
 
+	def addConceptIfLevel(self,name,level):
+		""""
+		Sets the concept level if the level of the prerisites is equal or supperior to the level.
+		"""
+		c = get_object_or_404(Concept,name=name)
+		for ac in c.getDescendant():
+			if ac.name in self.conceptmap: # il existe
+				if self.conceptmap[ac.name] < level:
+					return "prérequis non maitrisé "+ac.name
+			else:
+				self.conceptmap[ac.name]=0
+				return "prérequis non connu "+ac.name
+		self.conceptmap[name]=level
+		self.save()
+		return "done"+str(self.conceptjson)
 
 	def knowsConcept(self,name):
 		return name in self.conceptmap

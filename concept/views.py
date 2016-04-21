@@ -18,6 +18,12 @@ def jsonview(request):
 	return toJson()
 
 
+def debugview(request, concept_id):
+	text = "debug view"
+	student = get_object_or_404(student,student_id=11)
+	ci = get_object_or_404(Concept,pk=concept_id)
+	text += student.addConceptIfLevel(ci.name,2)
+	return HttpResponse(text)
 
 def racine(request):
     return  default(request,concept_id=1)
@@ -65,8 +71,7 @@ def dumpgraph(request,descl, comment,rankdir="RL", student="kiki"):
 		if student != None and student.knowsConcept(x.name) :
 			dot.node(x.name,URL=x.makeUrl(),color="green",style="filled",shape="box")
 		else:
-			 dot.node(x.name,URL=x.makeUrl(),color="white",style="filled",shape="box")
-
+			 dot.node(x.name,URL=x.makeUrl(),color="red",style="filled",shape="box")
 
 
 	for l in descl:

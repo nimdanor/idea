@@ -19,6 +19,13 @@ body {
 body {
     margin: 0;
 }
+
+h1 {
+	padding:15px;
+	margin:10px;
+	color:blue;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -54,7 +61,7 @@ a {
 }
 
 p {
-margin: 0 0 10px;
+margin:10px;
 }
 
 .sidebar {

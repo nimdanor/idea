@@ -12,116 +12,122 @@ import json
 # Create your models here.
 
 class Concept(models.Model):
-    """
-    Most important Class in the project
-    This class stores concepts (see reference DRevuz [1] Concept in the project for more information ).
-    """
-    # TODO : names must be in lowercase see file LowerCharField.py in this directory
-    name = LowerCaseCharField("Le nom du concept", max_length=30, unique=True)  # nom du concept pour référence
-    lname = models.CharField("Long Name", max_length=300, blank=True)  # nom plus complet pour désembiguisation
-    description = models.TextField("Description")  # Description textuelle avec des exemples si nécessaire
-    link = models.ManyToManyField('self', through='Link', symmetrical=False)  # un lien vers un autre concept nécessaire
-    # other_concept = models.ManyToManyField('self',blank=True)  # un lien vers d'autres concepts nécessaire
+	"""
+	Most important Class in the project
+	This class stores concepts (see reference DRevuz [1] Concept in the project for more information ).
+	"""
+	# TODO : names must be in lowercase see file LowerCharField.py in this directory
+	name = LowerCaseCharField("Le nom du concept", max_length=30, unique=True)  # nom du concept pour référence
+	lname = models.CharField("Long Name", max_length=300, blank=True)  # nom plus complet pour désembiguisation
+	description = models.TextField("Description")  # Description textuelle avec des exemples si nécessaire
+	link = models.ManyToManyField('self', through='Link', symmetrical=False)  # un lien vers un autre concept nécessaire
+	# other_concept = models.ManyToManyField('self',blank=True)  # un lien vers d'autres concepts nécessaire
 
-    pub_date = models.DateTimeField('date created', auto_now_add=True)  # creation time
-    update = models.DateTimeField('date update', auto_now=True)  #
-    level = models.IntegerField('niveau', default=-1)
-
-
-
-    def racine():
-        return Concept.objects.filter(pk=1)[0]
-
-    def getDescendant(self):
-        s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
-        s2 = set()
-        for l in s1:
-            s2.add(l.descendant)
-        for u in s1:
-            s2 = s2.union(u.descendant.getDescendant())
-
-        return s2
-
-    def getDescendantLinks(self):
-        s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
-        s2 = set()
-        for l in s1:
-            s2.add(l)
-        for u in s1:
-            s2 = s2.union(u.descendant.getDescendantLinks())
-        return s2
+	pub_date = models.DateTimeField('date created', auto_now_add=True)  # creation time
+	update = models.DateTimeField('date update', auto_now=True)  #
+	level = models.IntegerField('niveau', default=-1)
 
 
-    def getAscendant(self):
-        s1 = set(Link.objects.filter(name="prerequisite", descendant=self))
-        s2 = set()
-        for l in s1:
-            s2.add(l.ascendant)
-        for u in s1:
-            s2 = s2.union(u.ascendant.getAscendant())
-        return s2
 
-    def getNotDescendant(self):
-        s1 = self.getDescendant()
-        all = list(Concept.objects.all())
-        s2 = set()
-        for c in all:
-            if not c in s1 and c != self:
-                s2.add(c)
-        return s2
-
-    def getNietherAscendantNorDescendant(self):
-        s1 = self.getDescendant()
-        s2 = self.getAscendant()
-        all = set(Concept.objects.exclude(pk=self.pk).all())
-        r = (all - s1) - s2
-        return r
-
-    def __unicode__(self):
-        return u'%s' % (self.name)
-
-    def __str__(self):
-        return r'%s' % (self.name)
-
-    def save(self, *args, **kwargs):
-        super(Concept, self).save(*args, **kwargs)  # Call the "real" save() method.
-        if self.pk != 1:
-            racine = get_object_or_404(Concept, pk=1)
-            l = Link(name="prerequisite", descendant=self, ascendant=racine)
-            l.save()
-
-    def delete(self):
-        # si c'est la racine ne pas effacer
-        print("delete self pk =", self.pk)
-        if self.pk == 1 or self.name == "racine":
-            return
-
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        # faire la liste des predesceseur de self
-        pred = [o.ascendant for o in Link.objects.filter(ascendant=self)]
-        # faikre la liste des sucesseur de self
-        succ = [o.descendant for o in Link.objects.filter(descendant=self)]
-        #super(Concept,self).delete()
-        # creer un lien de
-        super(Concept, self)
-
-    def makeLabel(self):
-        bob = self.name + " " + str(self.level) + " " + str(self.pk) + " "
-        return bob
+	def racine():
+		return Concept.objects.filter(pk=1)[0]
 
 
-    def makeUrl(self):
-        return "/concept/edit/" + str(self.pk)
+	def getDescendantNames(self):
+		li=[]
+		for u in self.getDescendant():
+			li.append(u.name)
+		return li
+
+	def getDescendant(self):
+		s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
+		s2 = set()
+		for l in s1:
+			s2.add(l.descendant)
+		for u in s1:
+			s2 = s2.union(u.descendant.getDescendant())
+
+		return s2
+
+	def getDescendantLinks(self):
+		s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
+		s2 = set()
+		for l in s1:
+			s2.add(l)
+		for u in s1:
+			s2 = s2.union(u.descendant.getDescendantLinks())
+		return s2
 
 
-    def dolevelupdate(self, level):
+	def getAscendant(self):
+		s1 = set(Link.objects.filter(name="prerequisite", descendant=self))
+		s2 = set()
+		for l in s1:
+			s2.add(l.ascendant)
+		for u in s1:
+			s2 = s2.union(u.ascendant.getAscendant())
+		return s2
 
-        self.level = level
-        self.save()
+	def getNotDescendant(self):
+		s1 = self.getDescendant()
+		all = list(Concept.objects.all())
+		s2 = set()
+		for c in all:
+			if not c in s1 and c != self:
+				s2.add(c)
+		return s2
 
-        s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
-        for c in s1:
-            c.descendant.dolevelupdate(level + 1)
+	def getNietherAscendantNorDescendant(self):
+		s1 = self.getDescendant()
+		s2 = self.getAscendant()
+		all = set(Concept.objects.exclude(pk=self.pk).all())
+		r = (all - s1) - s2
+		return r
+
+	def __unicode__(self):
+		return u'%s' % (self.name)
+
+	def __str__(self):
+		return r'%s' % (self.name)
+
+	def save(self, *args, **kwargs):
+		super(Concept, self).save(*args, **kwargs)  # Call the "real" save() method.
+		if self.pk != 1:
+			racine = get_object_or_404(Concept, pk=1)
+			l = Link(name="prerequisite", descendant=self, ascendant=racine)
+			l.save()
+
+	def delete(self):
+		# si c'est la racine ne pas effacer
+		print("delete self pk =", self.pk)
+		if self.pk == 1 or self.name == "racine":
+			return
+
+		# faire la liste des predesceseur de self
+		pred = [o.ascendant for o in Link.objects.filter(ascendant=self)]
+		# faire la liste des sucesseur de self
+		succ = [o.descendant for o in Link.objects.filter(descendant=self)]
+		#super(Concept,self).delete()
+		# creer un lien de
+		super(Concept, self)
+
+	def makeLabel(self):
+		bob = self.name + " " + str(self.level) + " " + str(self.pk) + " "
+		return bob
+
+
+	def makeUrl(self):
+		return "/concept/edit/" + str(self.pk)
+
+
+	def dolevelupdate(self, level):
+
+		self.level = level
+		self.save()
+
+		s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
+		for c in s1:
+			c.descendant.dolevelupdate(level + 1)
 
 
 def toJson():
@@ -177,7 +183,7 @@ class Link(models.Model):
 
     def delete(self, using):
         print("using delete :" + using)
-        super(Link, self).delete(using)  # Call the "real" save() method.
+        super(Link, self).delete(using)  # Call the "real" delete() method.
         print("after delete ")
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 

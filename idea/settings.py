@@ -17,13 +17,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# DEV 
+# DEV
 SECRET_KEY = '^-k1d$y2mv_x+n06eyf-!l9&#n0&)5-hhv)h*r=(!c6l8!ad++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEV 
+# DEV
 # DEBUG = True
-# PROD 
+# PROD
 DEBUG=True
 
 TEMPLATE_DEBUG = True
@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'django_ace',
+    'pldata',
+    'student',
     'concept',
 )
 
@@ -63,12 +65,19 @@ WSGI_APPLICATION = 'idea.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-# pour la prod postgres 
+# pour la prod postgres
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-}
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASS'],
+        'HOST': '',
+        'PORT': '5432',
+#        'OPTIONS': {
+#          'autocommit': True,
+#        },
+   }
 }
 
 # Internationalization
@@ -94,6 +103,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
 )
 SETTINGS_PATH= os.path.realpath(os.path.dirname(__file__))
+
+
+
 TEMPLATE_DIRS = (
     os.path.join(SETTINGS_PATH, 'templates'),
 )

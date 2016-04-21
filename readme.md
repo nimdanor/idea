@@ -15,6 +15,7 @@ sudo pip3 install virtualenv
 
 	source ~/DJANGO/bin/activate 
 	pip3 install django
+	pip3 install django-jsonview
 
 4) Tada 
 
