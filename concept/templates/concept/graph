@@ -1,19 +1,19 @@
-// graphe general
+// Graphe Epistèmes PL
 digraph {
 	graph [rankdir=RL]
-		root [URL="/concept/edit/1" color=green shape=box style=filled]
+		root [URL="/concept/edit/1" color=yellow shape=box style=filled]
 		variable [URL="/concept/edit/2" color=green shape=box style=filled]
-		identifier [URL="/concept/edit/3" color=red shape=box style=filled]
-		fonction [URL="/concept/edit/4" color=red shape=box style=filled]
-		assignement [URL="/concept/edit/5" color=red shape=box style=filled]
-		suite [URL="/concept/edit/7" color=red shape=box style=filled]
-		call [URL="/concept/edit/8" color=red shape=box style=filled]
+		identifier [URL="/concept/edit/3" color=yellow shape=box style=filled]
+		function [URL="/concept/edit/4" color=yellow shape=box style=filled]
+		assignement [URL="/concept/edit/5" color=green shape=box style=filled]
+		suite [URL="/concept/edit/7" color=yellow shape=box style=filled]
+		call [URL="/concept/edit/8" color=yellow shape=box style=filled]
 		rightvalue [URL="/concept/edit/9" color=red shape=box style=filled]
-		primitivetype [URL="/concept/edit/10" color=red shape=box style=filled]
-		return [URL="/concept/edit/11" color=green shape=box style=filled]
+		primitivetype [URL="/concept/edit/10" color=orange shape=box style=filled]
+		return [URL="/concept/edit/11" color=red shape=box style=filled]
 		branching [URL="/concept/edit/13" color=red shape=box style=filled]
 		loop [URL="/concept/edit/14" color=red shape=box style=filled]
-		tuples [URL="/concept/edit/15" color=red shape=box style=filled]
+		tuples [URL="/concept/edit/15" color=green shape=box style=filled]
 		list [URL="/concept/edit/16" color=red shape=box style=filled]
 		comparaison [URL="/concept/edit/17" color=red shape=box style=filled]
 		hashtable [URL="/concept/edit/19" color=red shape=box style=filled]
@@ -21,78 +21,88 @@ digraph {
 		scope [URL="/concept/edit/21" color=red shape=box style=filled]
 		logic [URL="/concept/edit/22" color=red shape=box style=filled]
 		memory [URL="/concept/edit/23" color=green shape=box style=filled]
-		nonmutable [URL="/concept/edit/24" color=red shape=box style=filled]
+		nonmutable [URL="/concept/edit/24" color=green shape=box style=filled]
 		filetype [URL="/concept/edit/26" color=red shape=box style=filled]
 		iterator [URL="/concept/edit/27" color=red shape=box style=filled]
-		namedparameters [URL="/concept/edit/28" color=red shape=box style=filled]
+		namedparameters [URL="/concept/edit/28" color=yellow shape=box style=filled]
 		path [URL="/concept/edit/29" color=red shape=box style=filled]
-		absolutepath [URL="/concept/edit/30" color=green shape=box style=filled]
+		absolutepath [URL="/concept/edit/30" color=red shape=box style=filled]
 		string [URL="/concept/edit/31" color=red shape=box style=filled]
-		usertype [URL="/concept/edit/32" color=red shape=box style=filled]
+		usertype [URL="/concept/edit/32" color=green shape=box style=filled]
 		class_objet [URL="/concept/edit/33" color=red shape=box style=filled]
 		boolean [URL="/concept/edit/34" color=red shape=box style=filled]
-		keywords [URL="/concept/edit/35" color=green shape=box style=filled]
+		keywords [URL="/concept/edit/35" color=yellow shape=box style=filled]
 		relativepath [URL="/concept/edit/36" color=red shape=box style=filled]
 		foreach [URL="/concept/edit/37" color=red shape=box style=filled]
 		generator [URL="/concept/edit/38" color=red shape=box style=filled]
 		yield [URL="/concept/edit/39" color=red shape=box style=filled]
 		method [URL="/concept/edit/40" color=red shape=box style=filled]
-		dictionnary [URL="/concept/edit/41" color=red shape=box style=filled]
-		type [URL="/concept/edit/42" color=red shape=box style=filled]
+		dictionnary [URL="/concept/edit/41" color=green shape=box style=filled]
+		type [URL="/concept/edit/42" color=orange shape=box style=filled]
 		char [URL="/concept/edit/43" color=red shape=box style=filled]
 		concatenation [URL="/concept/edit/44" color=red shape=box style=filled]
 		commandlanguage [URL="/concept/edit/45" color=red shape=box style=filled]
 		operation [URL="/concept/edit/46" color=red shape=box style=filled]
 		scriptlanguage [URL="/concept/edit/47" color=red shape=box style=filled]
-		ashash [URL="/concept/edit/48" color=red shape=box style=filled]
+		ashash [URL="/concept/edit/48" color=green shape=box style=filled]
 		executionstack [URL="/concept/edit/50" color=red shape=box style=filled]
 		stack [URL="/concept/edit/51" color=red shape=box style=filled]
-		variadicfunction [URL="/concept/edit/52" color=red shape=box style=filled]
+		variadicfunction [URL="/concept/edit/52" color=green shape=box style=filled]
 		stdin [URL="/concept/edit/53" color=red shape=box style=filled]
 		grammar [URL="/concept/edit/54" color=red shape=box style=filled]
 		language [URL="/concept/edit/55" color=red shape=box style=filled]
 		decorator [URL="/concept/edit/56" color=red shape=box style=filled]
-		decoratorsequence [URL="/concept/edit/57" color=green shape=box style=filled]
+		decoratorsequence [URL="/concept/edit/57" color=red shape=box style=filled]
 		gc [URL="/concept/edit/58" color=red shape=box style=filled]
 		coroutine [URL="/concept/edit/59" color=red shape=box style=filled]
 		break [URL="/concept/edit/60" color=red shape=box style=filled]
 		continue [URL="/concept/edit/61" color=red shape=box style=filled]
-		predefined [URL="/concept/edit/62" color=red shape=box style=filled]
+		predefined [URL="/concept/edit/62" color=yellow shape=box style=filled]
 		sprocessus [URL="/concept/edit/63" color=red shape=box style=filled]
 		operatorpriority [URL="/concept/edit/64" color=red shape=box style=filled]
-		global [URL="/concept/edit/66" color=green shape=box style=filled]
-		parameter [URL="/concept/edit/67" color=red shape=box style=filled]
-		literal [URL="/concept/edit/68" color=red shape=box style=filled]
+		global [URL="/concept/edit/66" color=red shape=box style=filled]
+		parameter [URL="/concept/edit/67" color=yellow shape=box style=filled]
+		literal [URL="/concept/edit/68" color=green shape=box style=filled]
 		input [URL="/concept/edit/69" color=red shape=box style=filled]
-		comment [URL="/concept/edit/70" color=green shape=box style=filled]
+		comment [URL="/concept/edit/70" color=red shape=box style=filled]
 		listop [URL="/concept/edit/71" color=red shape=box style=filled]
 		sequenceop [URL="/concept/edit/72" color=red shape=box style=filled]
-		instructions [URL="/concept/edit/73" color=red shape=box style=filled]
+		instructions [URL="/concept/edit/73" color=yellow shape=box style=filled]
 		deepcopy [URL="/concept/edit/74" color=red shape=box style=filled]
-		sequence [URL="/concept/edit/75" color=red shape=box style=filled]
+		sequence [URL="/concept/edit/75" color=green shape=box style=filled]
 		lexical [URL="/concept/edit/76" color=red shape=box style=filled]
 		scopeinclass [URL="/concept/edit/77" color=red shape=box style=filled]
 		stdout [URL="/concept/edit/78" color=red shape=box style=filled]
 		stderr [URL="/concept/edit/79" color=red shape=box style=filled]
 		print [URL="/concept/edit/80" color=red shape=box style=filled]
-		display [URL="/concept/edit/81" color=red shape=box style=filled]
-		block [URL="/concept/edit/82" color=red shape=box style=filled]
+		display [URL="/concept/edit/81" color=green shape=box style=filled]
+		block [URL="/concept/edit/82" color=yellow shape=box style=filled]
 		indentation [URL="/concept/edit/83" color=red shape=box style=filled]
 		variadicmethod [URL="/concept/edit/84" color=red shape=box style=filled]
 		listcomprehensions [URL="/concept/edit/85" color=red shape=box style=filled]
 		" loopingtechniques" [URL="/concept/edit/86" color=red shape=box style=filled]
 		format [URL="/concept/edit/87" color=red shape=box style=filled]
-			fonction -> identifier
+		exception [URL="/concept/edit/88" color=red shape=box style=filled]
+		syntaxerror [URL="/concept/edit/89" color=red shape=box style=filled]
+		tree [URL="/concept/edit/90" color=red shape=box style=filled]
+		shortestpath [URL="/concept/edit/91" color=red shape=box style=filled]
+		"graph" [URL="/concept/edit/92" color=red shape=box style=filled]
+		magical [URL="/concept/edit/93" color=red shape=box style=filled]
+		warning [URL="/concept/edit/94" color=red shape=box style=filled]
+		conversion [URL="/concept/edit/95" color=red shape=box style=filled]
+		iterable [URL="/concept/edit/96" color=red shape=box style=filled]
+		redefinition [URL="/concept/edit/97" color=red shape=box style=filled]
+			function -> identifier
 			assignement -> variable
 			variable -> identifier
-			call -> fonction
+			call -> function
 			rightvalue -> variable
 			variable -> primitivetype
 			loop -> branching
 			branching -> comparaison
 			hashtable -> call
 			branching -> suite
-			fonction -> suite
+			function -> suite
 			recursive -> call
 			recursive -> branching
 			scope -> variable
@@ -117,7 +127,7 @@ digraph {
 			list -> assignement
 			relativepath -> path
 			usertype -> primitivetype
-			scope -> fonction
+			scope -> function
 			foreach -> iterator
 			generator -> iterator
 			yield -> generator
@@ -131,11 +141,11 @@ digraph {
 			ashash -> nonmutable
 			stack -> list
 			concatenation -> string
-			return -> fonction
+			return -> function
 			string -> char
 			executionstack -> call
 			executionstack -> variable
-			method -> fonction
+			method -> function
 			variadicfunction -> tuples
 			variadicfunction -> namedparameters
 			variadicfunction -> dictionnary
@@ -144,7 +154,7 @@ digraph {
 			sprocessus -> root
 			predefined -> keywords
 			commandlanguage -> grammar
-			fonction -> predefined
+			function -> predefined
 			scriptlanguage -> grammar
 			stdin -> sprocessus
 			coroutine -> generator
@@ -160,7 +170,7 @@ digraph {
 			boolean -> primitivetype
 			listop -> list
 			decoratorsequence -> decorator
-			decorator -> fonction
+			decorator -> function
 			stdin -> input
 			operation -> literal
 			operation -> variable
@@ -197,6 +207,19 @@ digraph {
 			hashtable -> ashash
 			listcomprehensions -> loop
 			listcomprehensions -> list
-			" loopingtechniques" -> root
-			format -> root
+			exception -> root
+			format -> string
+			" loopingtechniques" -> loop
+			shortestpath -> "graph"
+			tree -> usertype
+			"graph" -> usertype
+			syntaxerror -> exception
+			magical -> method
+			magical -> operation
+			function -> block
+			warning -> stderr
+			warning -> exception
+			conversion -> primitivetype
+			iterable -> foreach
+			redefinition -> operatorpriority
 }
