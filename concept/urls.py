@@ -26,7 +26,8 @@ urlpatterns = patterns('',
     url(r'^export/(?P<type>\w+)/$',views.export),
     url(r'^k/(?P<concept_id>\d+)/$', views.knowls),
     url(r'^json/$', views.jsonview),
-    url(r'^only/$', views.onlyGraph),
+    url(r'^only/(?P<student_num>\d+)/$', views.onlyGraph),
+    url(r'^small/(?P<student_num>\d+)/$', views.small),
 
     #url(r'^edit/(?P<concept_id>\d+)/$', views.edit),
     # vue simplifiée

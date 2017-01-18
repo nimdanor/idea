@@ -20,7 +20,7 @@ def jsonview(request):
 
 def debugview(request, concept_id):
 	text = "debug view"
-	student = get_object_or_404(student,student_id=11)
+	student = get_object_or_404(Student,student_id=11)
 	ci = get_object_or_404(Concept,pk=concept_id)
 	text += student.addConceptIfLevel(ci.name,2)
 	return HttpResponse(text)
@@ -36,12 +36,44 @@ def graph(request,rankdir):
 
     return makeGraph(request,descl,"graphe general","general",rankdir)
 
-def onlyGraph(request):
+def small(request, student_num):
 	descl = []
 	for r in getRoots():
 		descl += r.getDescendantLinks()
 
-	dumpgraph(request,descl,"Graphe Epistèmes PL","RL")
+	dumpgraph(request,descl,"Graphe local PL","RL",student=student_num,ALL=False)
+
+	template = loader.get_template("concept/graph_only.html")
+	context = RequestContext(request, {
+		'image':  2,
+		'hidden':'fnum',
+		'cname':"Graphe réduit"
+	})
+	return HttpResponse(template.render(context))
+
+def onlyGraph(request,student_num):
+	descl = []
+	for r in getRoots():
+		descl += r.getDescendantLinks()
+
+	dumpgraph(request,descl,"Graphe Epistèmes PL","RL",student=student_num)
+
+	template = loader.get_template("concept/graph_only.html")
+	context = RequestContext(request, {
+		'image':  2,
+		'hidden':'fnum',
+		'cname':"Graphe Complet"
+	})
+	return HttpResponse(template.render(context))
+
+
+
+def nonzerograph(request,student_num):
+	descl = []
+	for r in getRoots():
+		descl += r.getDescendantLinks()
+
+	dumpgraph(request,descl,"Graphe Epistèmes PL","RL",student=student_num)
 
 	template = loader.get_template("concept/graph_only.html")
 	context = RequestContext(request, {
@@ -57,11 +89,12 @@ def knowls(request,concept_id):
     text = "<div><p>" +  r.description + "</p></div>"
     return HttpResponse(text)
 
-def dumpgraph(request,descl, comment,rankdir="RL", student="kiki"):
+def dumpgraph(request,descl, comment,rankdir="RL", student=None,ALL=True):
 	dot = Digraph(comment=comment)
 	dot.format='svg'
 	dot.graph_attr['rankdir'] = rankdir
-	student = get_object_or_404(Student,student_id=11)
+	if student != None:
+		student = get_object_or_404(Student,student_id=student)
 
 	s=set()
 	for l in descl:
@@ -69,14 +102,20 @@ def dumpgraph(request,descl, comment,rankdir="RL", student="kiki"):
 		s.add(l.descendant)
 	for x in s:
 		if student != None and student.knowsConcept(x.name) :
-			dot.node(x.name,URL=x.makeUrl(),color="green",style="filled",shape="box")
+			cc = student.conceptlevel(x.name)
+			l= ['red','green','orange','yellow']
+			cc=l[min(cc,len(l)-1)]
+			dot.node(x.name,URL=x.makeUrl(),color=cc,style="filled",shape="box")
 		else:
-			 dot.node(x.name,URL=x.makeUrl(),color="red",style="filled",shape="box")
-
+			if ALL :
+				dot.node(x.name,URL=x.makeUrl(),color="red",style="filled",shape="box")
 
 	for l in descl:
-		dot.edge(l.descendant.name,l.ascendant.name)
-		pass
+		if ALL:
+			dot.edge(l.descendant.name,l.ascendant.name)
+		else:
+			if student != None and student.knowsConcept(l.descendant.name) and student.knowsConcept(l.ascendant.name):
+				dot.edge(l.descendant.name,l.ascendant.name)
 	dot.render('concept/templates/concept/graph')
 
 def makeGraph(request,descl,comment , cname,rankdir="RL"):

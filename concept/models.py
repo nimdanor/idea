@@ -39,6 +39,13 @@ class Concept(models.Model):
 			li.append(u.name)
 		return li
 
+	def getAscendantNames(self):
+		li=[]
+		for u in self.getAscendant():
+			li.append(u.name)
+		return li
+
+
 	def getDescendant(self):
 		s1 = set(Link.objects.filter(name="prerequisite", ascendant=self))
 		s2 = set()
