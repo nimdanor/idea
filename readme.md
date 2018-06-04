@@ -20,18 +20,18 @@ sudo pip3 install virtualenv
 4) Tada 
 
 	vous pouver tester en local le projet   
-	cd concepts  
+	cd concept/  
 	python3 manage makemigrations  
 	python3 manage runserver  
 	firefox http://127.0.0.1:8000/  
 5) Deployement
-	definir la variable environnement
+	definir la variable environnement  
 	SECRET_KEY = 'votre clef genere avec une commande adaptee'
 
-	definir les url pl.univ-mlv.fr (premier langage)
- 	DEBUG=False 
-	dans le fichier settings.py 
-	definir la base de donnée  
+	definir les url pl.univ-mlv.fr (premier langage)  
+ 	DEBUG=False  
+	dans le fichier settings.py  
+	definir la base de donnée    
 	python3 manage.py makemigrations  
 	python3 manage.py migrate  
 	python3 manage.py createsuperuser  
